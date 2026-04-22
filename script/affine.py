@@ -2,6 +2,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2 as cv
+import tkinter as tk
+from tkinter import filedialog
 
 class PointSelector:
     def __init__(self, image_path, num_points=3, label="pts"):
@@ -131,7 +133,21 @@ def main():
     print("     PHÉP BIẾN ĐỔI AFFINE - CHỌN ĐIỂM TỪ ẢNH")
     print("="*50)
     
-    image_path = 'input_images/affintest.jpg'
+    # Ẩn cửa sổ chính tkinter
+    root = tk.Tk()
+    root.withdraw()
+    
+    # Mở hộp thoại chọn ảnh
+    image_path = filedialog.askopenfilename(
+        title="Chọn hình ảnh",
+        filetypes=[
+            ("Image files", "*.jpg *.jpeg *.png *.bmp *.tif *.tiff"),
+            ("All files", "*.*")
+        ]
+    )
+    if not image_path:
+        print("❌ Chưa chọn ảnh, hủy bỏ!")
+        return
     
     # Chọn pts1 từ ảnh
     print("\n>>> Chọn pts1 (điểm nguồn)")
