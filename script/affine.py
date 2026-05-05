@@ -146,7 +146,7 @@ def main():
         ]
     )
     if not image_path:
-        print("❌ Chưa chọn ảnh, hủy bỏ!")
+        print("Chưa chọn ảnh, hủy bỏ!")
         return
     
     # Chọn pts1 từ ảnh
